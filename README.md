@@ -10,3 +10,12 @@ prek run -a        # run all hooks on all files
 ```
 
 Pre-commit hooks: `ruff format`, `ruff check --fix` (unsafe fixes on, review the diff), `ty check --fix`.
+
+Mutation testing ([mutmut](https://mutmut.readthedocs.io)), on demand and weekly in CI; fails if any mutant survives:
+
+```sh
+prek run --hook-stage manual mutmut --all-files
+uv run mutmut browse    # inspect survivors
+```
+
+mutmut skips decorated functions.

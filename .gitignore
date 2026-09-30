@@ -8,3 +8,4 @@ build/
 coverage.xml
 .coverage
 htmlcov/
+mutants/

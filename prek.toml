@@ -42,3 +42,14 @@ entry = "uv run --frozen ty check --fix"
 types = ["python"]
 pass_filenames = false
 priority = 30
+
+# manual: prek run --hook-stage manual mutmut --all-files
+
+[[repos.hooks]]
+id = "mutmut"
+name = "mutmut (mutation testing)"
+language = "system"
+entry = "sh -c 'uv run --frozen mutmut run >/dev/null; out=$(uv run --frozen mutmut results) && [ -z \"$out\" ] || { echo \"surviving mutants:\"; echo \"$out\"; exit 1; }'"
+types = ["python"]
+pass_filenames = false
+stages = ["manual"]

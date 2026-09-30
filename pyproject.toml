@@ -8,6 +8,7 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+        "mutmut>=3.8.0",
         "pytest>=9.1.1",
         "pytest-cov>=7.1.0",
         "ruff>=0.16.9",
@@ -47,3 +48,8 @@ branch = true
 show_missing = true
 skip_covered = true
 exclude_also = ["if TYPE_CHECKING:", "raise NotImplementedError"]
+
+[tool.mutmut]
+source_paths = ["src/template"]
+pytest_add_cli_args = ["--no-cov"]
+mutate_only_covered_lines = true
