@@ -5,7 +5,7 @@ Minimal Python template: [uv](https://docs.astral.sh/uv/), [ruff](https://docs.a
 ```sh
 uv sync            # create .venv with dev tools
 prek install       # install git hooks
-uv run pytest      # run tests
+uv run pytest      # run tests with coverage (terminal + coverage.xml)
 prek run -a        # run all hooks on all files
 ```
 
