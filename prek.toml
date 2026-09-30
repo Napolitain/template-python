@@ -1,0 +1,44 @@
+minimum_prek_version = "0.5.0"
+
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "trailing-whitespace" },
+  { id = "end-of-file-fixer" },
+  { id = "mixed-line-ending", args = ["--fix=lf"] },
+  { id = "fix-byte-order-marker" },
+  { id = "pretty-format-json", args = ["--autofix", "--no-sort-keys"] },
+  { id = "check-toml" },
+  { id = "check-yaml" },
+  { id = "check-merge-conflict" },
+  { id = "check-added-large-files" },
+  { id = "detect-private-key" },
+]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "ruff-format"
+name = "ruff format"
+language = "system"
+entry = "uv run --frozen ruff format"
+types = ["python"]
+priority = 10
+
+[[repos.hooks]]
+id = "ruff-check"
+name = "ruff check"
+language = "system"
+entry = "uv run --frozen ruff check --fix --exit-non-zero-on-fix"
+types = ["python"]
+priority = 20
+
+[[repos.hooks]]
+id = "ty"
+name = "ty check"
+language = "system"
+entry = "uv run --frozen ty check --fix"
+types = ["python"]
+pass_filenames = false
+priority = 30

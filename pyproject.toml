@@ -1,0 +1,35 @@
+[project]
+name = "template"
+version = "0.1.0"
+description = "Minimal Python template"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest", "ruff", "ty"]
+
+[build-system]
+requires = ["uv_build>=0.9,<1"]
+build-backend = "uv_build"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+fix = true
+unsafe-fixes = true
+show-fixes = true
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+fixable = ["ALL"]
+
+[tool.ty.terminal]
+error-on-warning = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-ra", "--strict-markers"]
