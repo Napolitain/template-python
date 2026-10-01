@@ -65,7 +65,7 @@ priority = 40
 id = "mutmut"
 name = "mutmut (mutation testing)"
 language = "system"
-entry = "sh -c 'uv run --frozen mutmut run >/dev/null; out=$(uv run --frozen mutmut results) && [ -z \"$out\" ] || { echo \"surviving mutants:\"; echo \"$out\"; exit 1; }'"
+entry = "uv run --frozen python tools/mutation.py"
 types = ["python"]
 pass_filenames = false
 stages = ["manual"]

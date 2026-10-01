@@ -29,7 +29,7 @@ def test_sort_is_idempotent(xs: list[int]) -> None:
 
 ## Mutation testing
 
-[mutmut](https://mutmut.readthedocs.io), on demand and weekly in CI (`.github/workflows/mutation.yml`); fails if any mutant survives:
+[mutmut](https://mutmut.readthedocs.io), on demand and weekly in CI (`.github/workflows/mutation.yml`); `tools/mutation.py` fails if any mutant survives (`mutmut run` itself always exits 0):
 
 ```sh
 prek run --hook-stage manual mutmut --all-files
