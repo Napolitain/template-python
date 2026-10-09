@@ -31,8 +31,11 @@ show-fixes = true
 docstring-code-format = true
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "C901"]
 fixable = ["ALL"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 
 [tool.ty.terminal]
 error-on-warning = true

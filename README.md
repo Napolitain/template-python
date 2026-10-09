@@ -13,6 +13,13 @@ prek run -a --hook-stage pre-push    # pre-push hooks
 - pre-commit: `ruff format`, `ruff check --fix` (unsafe fixes on, review the diff), `ty check --fix`
 - pre-push: `ty check`, `pytest` with coverage gate
 
+## Complexity
+
+Ruff's `C901` check enforces a maximum McCabe cyclomatic complexity of 10 per
+function, including tests and tools, in the existing pre-commit hook and CI.
+Configure it in `[tool.ruff.lint.mccabe]` in `pyproject.toml`. Refactoring is manual.
+Ruff does not provide a cognitive-complexity rule.
+
 ## Coverage
 
 pytest-cov (branch coverage) runs with every `pytest`, and fails below 80% (`fail_under` in `[tool.coverage.report]`).
