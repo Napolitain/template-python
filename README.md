@@ -63,3 +63,18 @@ uv run mutmut browse    # inspect survivors
 ```
 
 mutmut skips decorated functions (your code, not tests: `@given` tests are fine).
+
+## Profile-guided optimization
+
+There is no application-level instrumentation PGO, sampling/AutoFDO or Propeller
+build mode for this pure-Python package. `uv build` builds a package distribution;
+it does not compile the application's Python functions into a native executable
+that can consume these profiles. pytest-cov data is not optimization training data.
+
+CPython itself supports [PGO, LTO and optional BOLT when building the interpreter](https://docs.python.org/3.14/using/configure.html#performance-options).
+Those optimize the interpreter and require a separate interpreter build/training
+process; they are not flags to `uv` or this package. An interpreter selected by uv
+or Nix may already be optimized, so verify how it was built before comparing it.
+Native extensions or alternative ahead-of-time compilers require their own
+validated workflow and are outside this template. Measure your actual application
+with representative inputs, a fixed interpreter/dependency set and repeated runs.
