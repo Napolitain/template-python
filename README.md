@@ -1,5 +1,7 @@
 # template-python
 
+See [AGENTS.md](AGENTS.md) for the working, verification, performance and commit policies.
+
 Minimal Python template: [uv](https://docs.astral.sh/uv/), [ruff](https://docs.astral.sh/ruff/), [ty](https://docs.astral.sh/ty/), [pytest](https://pytest.org), hooks via [prek](https://prek.j178.dev).
 
 ```sh
