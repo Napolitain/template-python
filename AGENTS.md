@@ -132,7 +132,10 @@ Use `uv run --frozen pytest` for focused tests. Hooks run Ruff formatting/lintin
 ty and pytest with branch coverage and an 80% coverage gate. Review unsafe Ruff
 fixes and ty autofixes for behavior changes. Keep implementation in `src/template/`
 and tests in `tests/`; Hypothesis properties run with pytest. Preserve Ruff's
-cyclomatic complexity limit of 10 and strict typing.
+cyclomatic complexity limit of 10 and strict typing. Target Python 3.15 consistently
+in `.python-version`, `requires-python`, Ruff and the optional Nix shell. Retain the
+`PTH`, `C4` and stable `FURB` lint families for pathlib, comprehension and idiomatic
+standard-library suggestions; preview rules are not enabled.
 
 Run `prek run --hook-stage manual mutmut --all-files` for mutation testing when
 applicable. Use `tools/mutation.py` through the hook so survivors fail the check;

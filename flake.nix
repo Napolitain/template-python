@@ -23,7 +23,7 @@
                         packages = [
                             pkgs.git
                             pkgs.prek
-                            pkgs.python314
+                            pkgs.python315
                             pkgs.uv
                         ];
                         # Use the Nix interpreter; project dependencies remain managed by uv.

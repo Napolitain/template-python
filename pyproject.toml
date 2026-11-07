@@ -3,7 +3,7 @@ name = "template"
 version = "0.1.0"
 description = "Minimal Python template"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 dependencies = []
 
 [dependency-groups]
@@ -12,7 +12,7 @@ dev = [
         "mutmut>=3.8.0",
         "pytest>=9.1.1",
         "pytest-cov>=7.1.0",
-        "ruff>=0.16.9",
+        "ruff>=0.17.4",
         "ty>=0.0.84",
 ]
 
@@ -21,7 +21,7 @@ requires = ["uv_build>=0.12.21,<0.13"]
 build-backend = "uv_build"
 
 [tool.ruff]
-target-version = "py314"
+target-version = "py315"
 line-length = 100
 fix = true
 unsafe-fixes = true
@@ -31,7 +31,7 @@ show-fixes = true
 docstring-code-format = true
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "C901"]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "PTH", "C4", "FURB", "RUF", "C901"]
 fixable = ["ALL"]
 
 [tool.ruff.lint.mccabe]

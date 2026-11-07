@@ -15,6 +15,22 @@ prek run -a --hook-stage pre-push    # pre-push hooks
 - pre-commit: `ruff format`, `ruff check --fix` (unsafe fixes on, review the diff), `ty check --fix`
 - pre-push: `ty check`, `pytest` with coverage gate
 
+## Modern Python and idiomatic code
+
+The template requires Python 3.15+; `.python-version` selects the 3.15 series and
+Ruff targets `py315`. Python 3.15 is a stable release; see the
+[official downloads](https://www.python.org/downloads/).
+
+Ruff enables `UP` (modern Python), `SIM` (simplification), `PTH` (pathlib),
+`C4` (comprehensions) and stable `FURB` (refurb) rules, alongside the existing
+correctness, imports and complexity checks. These detect known patterns that can
+use modern syntax, built-ins or standard-library APIs. Preview rules remain off.
+See [Ruff's rule reference](https://docs.astral.sh/ruff/rules/) for individual rules.
+
+The pre-commit hook applies available fixes, including unsafe fixes; review the
+diff and rerun the hook after it changes files. Some suggestions require manual
+changes, and linting does not find every possible standard-library replacement.
+
 ## Optional Nix shell
 
 Installing the tools directly on NixOS (or another OS) remains supported. The
@@ -31,7 +47,7 @@ Then run the normal development commands in this README. Each template has its o
 To refresh to the latest unstable packages, run `nix flake update nixpkgs`,
 then leave and re-enter the shell. Commit the updated lock file with your project.
 
-The shell supplies Python 3.14 and uv, and disables uv's Python downloads so
+The shell supplies Python 3.15 and uv, and disables uv's Python downloads so
 `uv sync` uses the Nix interpreter. Project dependencies and checks remain in uv.
 
 ## Complexity
@@ -73,7 +89,7 @@ build mode for this pure-Python package. `uv build` builds a package distributio
 it does not compile the application's Python functions into a native executable
 that can consume these profiles. pytest-cov data is not optimization training data.
 
-CPython itself supports [PGO, LTO and optional BOLT when building the interpreter](https://docs.python.org/3.14/using/configure.html#performance-options).
+CPython itself supports [PGO, LTO and optional BOLT when building the interpreter](https://docs.python.org/3.15/using/configure.html#performance-options).
 Those optimize the interpreter and require a separate interpreter build/training
 process; they are not flags to `uv` or this package. An interpreter selected by uv
 or Nix may already be optimized, so verify how it was built before comparing it.
